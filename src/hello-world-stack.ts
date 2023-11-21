@@ -42,14 +42,14 @@ export class HelloWorldServiceStack extends Stack {
         );
 
         api.addDomainName('DomainName', {
-            domainName: `${props.stage}-template.api.helpfl.click`,
+            domainName: `${props.stage}-jobs.api.helpfl.click`,
             certificate: cert,
             endpointType: EndpointType.EDGE,
             basePath: 'hello-world'
         });
 
         new ARecord(this, 'ARecord', {
-            recordName: `${props.stage}-template.api.helpfl.click`,
+            recordName: `${props.stage}-jobs.api.helpfl.click`,
             target: RecordTarget.fromAlias(new ApiGateway(api)),
             zone: HostedZone.fromLookup(this, 'HostedZone', {
                 domainName: 'helpfl.click'
